@@ -21,6 +21,7 @@ class CreateDistritosTable extends Migration
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
