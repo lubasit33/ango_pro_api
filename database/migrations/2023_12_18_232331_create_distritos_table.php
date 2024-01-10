@@ -14,7 +14,7 @@ class CreateDistritosTable extends Migration
     public function up()
     {
         Schema::create('distritos', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('nome_distrito', 21);
             $table->foreignId('municipio_id')
                 ->constrained()

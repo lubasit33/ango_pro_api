@@ -14,7 +14,7 @@ class CreateComunasTable extends Migration
     public function up()
     {
         Schema::create('comunas', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('nome_comuna', 22);
             $table->foreignId('municipio_id')
                 ->constrained()
