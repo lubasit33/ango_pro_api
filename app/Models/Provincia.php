@@ -11,9 +11,11 @@ class Provincia extends Model
 {
     use HasFactory, SoftDeletes, UuidTrait;
 
-    protected $fillable = [
-        'nome_provincia',
-    ];
+    public $incrementing = false;
+
+    protected $keyType = 'uuid';
+    
+    protected $fillable = ['nome_provincia'];
 
     public function municipios()
     {

@@ -15,12 +15,16 @@ class ProvinciaRepository
 
     public function getTodasProvincias()
     {
-        return $this->entity->all();
+        return $this->entity
+                    ->with(['municipios.comunas', 'municipios.distritos'])
+                    ->get();
     }
 
-    public function getProvincia(int $id)
+    public function getProvincia(string $identify)
     {
-        return $this->entity->findOrFail($id);
+        return $this->entity
+                    ->with(['municipios.comunas', 'municipios.distritos'])
+                    ->findOrFail($identify);
     }
 
 }

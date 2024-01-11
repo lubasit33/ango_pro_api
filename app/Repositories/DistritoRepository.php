@@ -2,25 +2,25 @@
 
 namespace App\Repositories;
 
-use App\Models\Comuna;
+use App\Models\Distrito;
 
-class ComunaRepository
+class DistritoRepository
 {
     protected $entity;
 
-    public function __construct(Comuna $model)
+    public function __construct(Distrito $model)
     {
         $this->entity = $model;
     }
 
-    public function getTodasComunasByMunicipioId(string $municipioId)
+    public function getTodosDistritosByMunicipioId(string $municipioId)
     {
         return $this->entity
                     ->where('municipio_id', $municipioId)
                     ->get();
     }
 
-    public function getComuna(string $identify)
+    public function getDistrito(string $identify)
     {
         return $this->entity
                     ->findOrFail($identify);

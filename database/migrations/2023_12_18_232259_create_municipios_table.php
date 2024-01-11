@@ -15,11 +15,8 @@ class CreateMunicipiosTable extends Migration
     {
         Schema::create('municipios', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('provincia_id')->nullable(false);
             $table->string('nome_municipio', 18);
-            $table->foreignId('provincia_id')
-                ->constrained()
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });

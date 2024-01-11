@@ -15,12 +15,10 @@ class CreateDistritosTable extends Migration
     {
         Schema::create('distritos', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('municipio_id')->nullable(false);
             $table->string('nome_distrito', 21);
-            $table->foreignId('municipio_id')
-                ->constrained()
-                ->cascadeOnUpdate()
-                ->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
