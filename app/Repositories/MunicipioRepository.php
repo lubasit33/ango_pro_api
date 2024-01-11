@@ -13,14 +13,17 @@ class MunicipioRepository
         $this->entity = $model;
     }
 
-    public function getTodosMunicipios()
+    public function getTodosMunicipiosByProvinciaId(string $provinciaId)
     {
-        return $this->entity->all();
+        return $this->entity
+                    ->where('provincia_id', $provinciaId)
+                    ->get();
     }
 
-    public function getMunicipio(int $id)
+    public function getMunicipio(string $identify)
     {
-        return $this->entity->findOrFail($id);
+        return $this->entity
+                    ->findOrFail($identify);
     }
 
 }

@@ -1,19 +1,28 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+use App\Http\Controllers\Api\{
+    ComunaController,
+    DistritoController,
+    MunicipioController,
+    ProvinciaController
+};
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/provincias', [ProvinciaController::class, 'index']);
+Route::get('/provincias/{id}', [ProvinciaController::class, 'show']);
+
+Route::get('/provincias/{id}/municipios', [MunicipioController::class, 'index']);
+Route::get('/municipios/{id}', [MunicipioController::class, 'show']);
+
+Route::get('/municipios/{id}/comunas', [ComunaController::class, 'index']);
+Route::get('/comunas/{id}', [ComunaController::class, 'show']);
+
+Route::get('/municipios/{id}/distritos', [DistritoController::class, 'index']);
+Route::get('/distritos/{id}', [ComunaController::class, 'show']);
+
+Route::get('/', function() {
+    return response()->json([
+        'success' => true,
+    ]);
 });
