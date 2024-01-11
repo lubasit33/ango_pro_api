@@ -21,6 +21,7 @@ class CreateComunasTable extends Migration
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
